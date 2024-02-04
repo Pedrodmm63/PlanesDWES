@@ -60,49 +60,66 @@
 
 		</div>
 		<div class="col-5">
-			<form th:action="@{~/plan/save}" th:object="${plan}" method="post" >
-			<div class="card bg-light mb-3" style="max-width: 18rem;">
-			  <div class="card-header"><input readonly type="text" th:field="*{id}" size=2/></div>
-			  <div class="card-body">
-				<h5 class="card-title"><input type="text" th:field="*{nombre}" size=10/></h5>
-				<p class="card-text">
-					<ul class="list-group">
-					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
-						Tutoría: 
-							<select th:if="${plan.tutor==null}" class="form-control" th:field="*{tutor}">
-      							<option th:each="t:${tutores}" th:value="${t.id}" th:text="${t.nombre}">OPCION</option>
-						    </select>
-						    <select th:if="${plan.tutor!=null}" class="form-control" th:field="*{tutor}">
-      							<option th:value="*{tutor.id}" th:text="*{tutor.nombre}">OPCION</option>
-							</select>
-					  </li>
-					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
-						Curso
-						 	<select class="form-control" th:field="*{curso}">
-      							<option value="null">No asignado</option>
-      							<option th:each="c:${cursos}" th:value="${c.nombre}" th:text="${c.nombre}">OPCION</option>
-						    </select>
-					  </li>
-					</ul>
+			<form th:action="@{~/plan/save}" th:object="${plan}" method="post">
+				<div class="card bg-light mb-3" style="max-width: 18rem;">
+					<div class="card-header"><input readonly type="text" th:field="*{id}" size=2 /></div>
+					<div class="card-body">
+						<h5 class="card-title"><input type="text" th:field="*{nombre}" size=10 /></h5>
+						<p class="card-text">
+						<ul class="list-group">
+							<li
+								class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
+								Tutoría:
+								<select th:if="${plan.tutor==null}" class="form-control" th:field="*{tutor}">
+									<option th:each="t:${tutores}" th:value="${t.id}" th:text="${t.nombre}">OPCION
+									</option>
+								</select>
+								<select th:if="${plan.tutor!=null}" class="form-control" th:field="*{tutor}">
+									<option th:value="*{tutor.id}" th:text="*{tutor.nombre}">OPCION</option>
+								</select>
+							</li>
+							<li
+								class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
+								Curso
+								<select class="form-control" th:field="*{curso}">
+									<option value="null">No asignado</option>
+									<option th:each="c:${cursos}" th:value="${c.nombre}" th:text="${c.nombre}">OPCION
+									</option>
+								</select>
+							</li>
+						</ul>
+						</p>
+					</div>
+				</div>
+				<p><input type="submit" class="btn btn-primary" value="enviar" /></p>
+			</form>
+		</div>
+		<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" th:if="${planNuevo!=null}">
+			<div class="toast-header">
+				<svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+					aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+					<rect width="100%" height="100%" fill="#007aff"></rect>
+				</svg>
+				<strong class="me-auto">Bootstrap</strong>
+				<small>Ahora</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" th:href="@{~/plan}">
+
+				</button>
+			</div>
+			<div class="toast-body">
+				Se ha añadido el plan <span th:text="${planNuevo.nombre}"></span>
+				<p>
+					Tutor:
+
+					<span th:text="${planNuevo.tutor?.nombre}"></span>
 				</p>
-			  </div>
-			</div>	
-			<p><input type="submit" class="btn btn-primary" value="enviar"/></p>
-			</form>	
+				<p>
+					Curso:
+					<span th:text="${planNuevo.curso?.nombre}"></span>
+				</p>
+			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	<!-- Optional JavaScript -->

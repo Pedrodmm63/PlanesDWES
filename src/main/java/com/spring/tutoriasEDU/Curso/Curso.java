@@ -45,13 +45,4 @@ public class Curso {
 		this.planes = planes;
 	}
 
-	@Override
-	public String toString() {
-		return "Curso [nombre=" + nombre  + "]";
-	}
-	
-	
-	
-	
-	
 }

@@ -126,16 +126,6 @@ public class PlanController {
 
 	@PostMapping("/plan/save")
 	public ModelAndView formTutoria(@ModelAttribute Plan plan) {
-
-		/*Tutor tutor = plan.getTutor();
-		tutor.setPlan(plan);
-		planDao.save(plan);
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("plan", plan);
-		model.setViewName("redirect:/plan");
-
-		return model;*/
 		
 		
 		if (plan.getTutor() != null) {
@@ -151,10 +141,34 @@ public class PlanController {
 	    planDao.save(plan);
 
 	    ModelAndView model = new ModelAndView();
-	    model.setViewName("redirect:/plan");
+	    model.addObject("planNuevo", plan);
+	    model.setViewName("redirect:/plan/nuevo/" + plan.getId());
 
 	    return model;
 	}
 
+	@GetMapping("plan/nuevo/{id}")
+	public ModelAndView popupNuevoPlan(@PathVariable long id) {
+
+		Plan plan = new Plan();
+		ModelAndView model = new ModelAndView();
+
+		List<Plan> planes = (List<Plan>) planDao.findAll();
+
+		Plan planNuevo = planDao.findById(id).get();
+
 	
+			model.addObject("plan", plan);
+			model.addObject("tutores", tutorDAO.getTutoresNoEnlazados());
+			model.addObject("planes", planes);
+			model.addObject("planNuevo", planNuevo);
+			model.addObject("cursos", cursoDao.findAll());
+			model.setViewName("planes");
+		
+		
+
+		
+
+		return model;
+	}
 }

@@ -60,15 +60,4 @@ public class Tutor {
 	public void setPlan(Plan plan) {
 		this.plan = plan;
 	}
-
-	@Override
-	public String toString() {
-		return "Tutor [id=" + id + ", nombre=" + nombre + ", email=" + email + "]";
-	}
-
-
-	
-	
-	
-	
 }

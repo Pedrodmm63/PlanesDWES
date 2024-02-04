@@ -74,15 +74,5 @@ public class Plan {
 	public void setTutor(Tutor tutor) {
 		this.tutor = tutor;
 	}
-
-	@Override
-	public String toString() {
-		return "Plan [id=" + id + ", nombre=" + nombre + ", tutor=" + tutor + ", curso=" + curso + "]";
-	}
-	
-	
-	
-	
-	
 	
 }

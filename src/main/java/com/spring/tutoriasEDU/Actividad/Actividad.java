@@ -74,11 +74,7 @@ public class Actividad {
 		this.descripcion = descripcion;
 	}
 
-	@Override
-	public String toString() {
-		return "Actividad [id=" + id + ", usuarios=" + usuarios + ", obligatorio=" + obligatorio + ", nombree="
-				+ nombre + ", descripcion=" + descripcion + "]";
-	}
+
 	
 	
 }
